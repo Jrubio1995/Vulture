@@ -5,7 +5,7 @@ body {
   
   .sidenav {
     height: 100%;
-    width: 300px;
+    width: 510px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -28,7 +28,7 @@ body {
   } */
   
   .container-fluid {
-    margin-left: 300px; 
+    margin-left: 510px; 
     font-size: 28px; 
     padding-top: 200px;
     padding-left: 200px;
@@ -52,9 +52,16 @@ body {
     width: fit-content;
     
   }
-  img {
+  .button-img {
     border: 5px solid cornflowerblue
   }
 
-  
+  #maker {
+    max-width: 50%;
+  }
+
+  #renderChar
+  {
+    position: absolute; left: 0; top: 0; z-index: 0;
+  }
 
