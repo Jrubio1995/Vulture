@@ -6,8 +6,10 @@ $(document).load("", function () {
     var img = document.getElementById("drkstf");
     ctx.drawImage(img, 0, 0);
 
+    $("#renderChar").removeClass("masc").addClass("fem")
     $("#dollPartsf").hide();
     $("#dollPartsm").hide();
+    $(".done").hide();
 });
 
 
@@ -41,6 +43,8 @@ $("#drkstm").click(function () {
 
 $("#drkrf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -52,6 +56,8 @@ $("#drkrf").click(function () {
 });
 
 $("#drkrm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -65,6 +71,8 @@ $("#drkrm").click(function () {
 
 $("#drkf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -76,6 +84,8 @@ $("#drkf").click(function () {
 });
 
 $("#drkm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -89,6 +99,8 @@ $("#drkm").click(function () {
 
 $("#mdf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -100,6 +112,8 @@ $("#mdf").click(function () {
 });
 
 $("#mdm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -113,6 +127,8 @@ $("#mdm").click(function () {
 
 $("#ltstf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -124,6 +140,8 @@ $("#ltstf").click(function () {
 });
 
 $("#ltstm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -137,6 +155,8 @@ $("#ltstm").click(function () {
 
 $("#ltrf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -148,6 +168,8 @@ $("#ltrf").click(function () {
 });
 
 $("#ltrm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -161,6 +183,8 @@ $("#ltrm").click(function () {
 
 $("#ltf").click(function () {
 
+    $("#renderChar").removeClass("masc").addClass("fem")
+
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -172,6 +196,8 @@ $("#ltf").click(function () {
 });
 
 $("#ltm").click(function () {
+
+    $("#renderChar").removeClass("fem").addClass("masc")
 
     var canvas = document.getElementById("renderChar");
     var context = canvas.getContext("2d");
@@ -187,12 +213,14 @@ $(document).ready(function () {
     $("#ok").click(function () {
         $("#choose-body").hide();
         $("#ok").hide();
+        $(".done").show();
         $("h2").hide();
         if ($('#renderChar').hasClass('fem')) {
             $("#dollPartsf").show();
         } else {
             $("#dollPartsm").show();
         }
+    
     });
 
 });
@@ -225,7 +253,154 @@ $(document).ready(function () {
 
 // // });
 
+// Female parts
+// Female hair
 
+$("#fponyblk").click(function(){
+
+    var canvas =document.getElementById("renderHair");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderHair");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fponyblk");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#flongstrtblk").click(function(){
+
+    var canvas =document.getElementById("renderHair");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderHair");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("flongstrtblk");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#fshortblk").click(function(){
+
+    var canvas =document.getElementById("renderHair");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderHair");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fshortblk");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#fwavyblk").click(function(){
+
+    var canvas =document.getElementById("renderHair");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderHair");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fwavyblk");
+    ctx.drawImage(img, 0, 0);
+  });
+// Female eyes
+  $("#fbrwneyes").click(function(){
+
+    var canvas =document.getElementById("renderEyes");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderEyes");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fbrwneyes");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#fblueyes").click(function(){
+
+    var canvas =document.getElementById("renderEyes");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderEyes");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fblueyes");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#fgrneyes").click(function(){
+
+    var canvas =document.getElementById("renderEyes");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderEyes");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fgrneyes");
+    ctx.drawImage(img, 0, 0);
+  });
+
+  $("#fgryeyes").click(function(){
+
+    var canvas =document.getElementById("renderEyes");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderEyes");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fgryeyes");
+    ctx.drawImage(img, 0, 0);
+  });
+//  Female clothes
+
+$("#farmor").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("farmor");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#ftunic").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("ftunic");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#fbard").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fbard");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#fwiz").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("fwiz");
+    ctx.drawImage(img, 0, 0);
+  });
+
+
+// male parts
+// male hair
 
   $("#mpmdrblk").click(function(){
 
@@ -274,7 +449,7 @@ $(document).ready(function () {
     var img = document.getElementById("mwavyblk");
     ctx.drawImage(img, 0, 0);
   });
-
+// Male eyes
   $("#mbrneyes").click(function(){
 
     var canvas =document.getElementById("renderEyes");
@@ -322,6 +497,78 @@ $(document).ready(function () {
     var img = document.getElementById("mgryeyes");
     ctx.drawImage(img, 0, 0);
   });
+//   Male clothes
+
+$("#marmor").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("marmor");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#mtunic").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("mtunic");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#mbard").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("mbard");
+    ctx.drawImage(img, 0, 0);
+  });
+  $("#mwiz").click(function(){
+
+    var canvas =document.getElementById("renderCloth");
+    var context =canvas.getContext("2d");
+    context.clearRect(0,0,canvas.width,canvas.height);
+
+    var c = document.getElementById("renderCloth");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("mwiz");
+    ctx.drawImage(img, 0, 0);
+  });
 
 
+  $(document).ready(function () {
+    $(".done").click(function () {
+        var canvas=document.getElementById('canvas0');
+        var context=canvas.getContext('2d');
+        
+        context.drawImage(myImage,0,0);
 
+        var canvas1=document.getElementById('renderChar');
+        var canvas2=document.getElementById('renderEyes');
+        var canvas3=document.getElementById('renderHair');
+        var canvas4=document.getElementById('renderCloth');
+        
+        // merge 4 canvases (canvas1-canvas4) onto a single canvas
+        // (this example assumes canvas1-4 are 100x100 -- adjust to your needs)
+        context.drawImage(canvas1,500,1000);
+        context.drawImage(canvas2,500,1000);
+        context.drawImage(canvas3,500,1000);
+        context.drawImage(canvas4,500,1000);
+    });
+
+});
+
+var img=new Image();
+img.onload=function(){
+    document.body.appendChild(img);
+}
+img.src=dataURL;
