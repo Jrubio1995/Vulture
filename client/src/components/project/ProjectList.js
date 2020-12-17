@@ -21,7 +21,7 @@ const ProjectList = () => {
         // eslint-disable-next-line
     }, [message]);
 
-    if (projects.length === 0) return <p>No projects. Add a new project.</p>;
+    if (projects.length === 0) return <p>No Hobbies. Add a New Hobby.</p>;
 
 
     return (

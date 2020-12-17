@@ -2,12 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import projectContext from '../../context/Project/ProjectContext';
 import taskContext from '../../context/Task/TaskContext';
 
-const Form = () => {
-    // extract if a project is active
+const TaskForm = () => {
     const projectsContext = useContext(projectContext);
     const { project } = projectsContext;
-
-    // get state and functions function from taskState
     const tasksContext = useContext(taskContext);
     const { selectedittask, errortask, addTask, validateTask,
         getTasks, updateTask, resetTask } = tasksContext;
@@ -23,7 +20,7 @@ const Form = () => {
         }
     }, [selectedittask]);
 
-    // state of form
+    // status form
     const [task, setTask] = useState({
         name: '',
     })
@@ -54,21 +51,20 @@ const Form = () => {
         }
         // if is Edit or New Task
         if (selectedittask === null) {
-            // add the new task to the state
+            // add the new task to the status
             task.project = actualProject._id;
             addTask(task);
         } else {
             updateTask(task);
-            // eliminate selectedtask from state
             resetTask()
         }
-        // get and filter the tasks from actual project
+
         getTasks(actualProject.id)
-        // reinitiate form
         setTask({
             name: '',
         })
     }
+    // line 93 : Alert if nothing is Entered 
     return (
         <div className="task-form">
             <h2 className="task-form-title">ADD TASK TO THIS HOBBY</h2>
@@ -79,7 +75,7 @@ const Form = () => {
                     <input
                         type="text"
                         className="input-text"
-                        placeholder="Task name"
+                        placeholder="Task name here"
                         name="name"
                         value={name}
                         onChange={handleChange}
@@ -89,14 +85,14 @@ const Form = () => {
                     <input
                         type="submit"
                         className="btn btn-primary btn-block btn-submit"
-                        value={selectedittask ? 'Edit Task' : 'Add New Task'}
+                        value={selectedittask ? 'Edit Task' : 'Add Task'}
                     />
                 </div>
             </form>
-            {errortask ? <p className="message error">HOBBY NAME IS A REQUUIRED FEILD</p>
+            {errortask ? <p className="message error">HOBBY NAME IS A REQUIRED FEILD</p>
                 : null}
         </div>
     )
 }
 
-export default Form;
+export default TaskForm;

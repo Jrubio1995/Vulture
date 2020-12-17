@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import taskContext from './TaskContext';
-import TaskReducer from './TaskReducer';
+import taskContext from '../Task/TaskContext';
+import TaskReducer from '../Task/TaskReducer';
 
 import {
     PROJECT_TASKS,
@@ -13,14 +13,14 @@ import {
 } from '../../type/index';
 import axiosClient from '../../config/Axios';
 
-const TaskState = props => {
+const TaskStatus = props => {
     const initialState = {
         projectstasks: [],
         errortask: false,
         selectedittask: null
     }
 
-    // create diispatch and state
+    // create dispatch and state
     const [state, dispatch] = useReducer(TaskReducer, initialState);
 
     // get projects tasks
@@ -39,9 +39,9 @@ const TaskState = props => {
     }
 
     // add a task to a selected project
-    const addTask = async task => {
+    var addTask = async task => {
         console.log(task);
-        const result = await axiosClient.post('/api/tasks', task);
+        var result = axiosClient.post('/api/tasks', task);
         console.log(result);
         try {
             dispatch({
@@ -52,17 +52,16 @@ const TaskState = props => {
             console.log(error);
         }
     }
-    // validate and show error if needed
     const validateTask = () => {
         dispatch({
             type: VALIDATE_TASK,
         })
     }
 
-    // delete task by Id
+    // delete task
     const deleteTask = async (id, project) => {
         try {
-            await axiosClient.delete(`/api/tasks/${id}`, { params: { project } });
+            axiosClient.delete(`/api/tasks/${id}`, { params: { project } });
             dispatch({
                 type: DELETE_TASK,
                 payload: id
@@ -119,4 +118,4 @@ const TaskState = props => {
     )
 }
 
-export default TaskState;
+export default TaskStatus;

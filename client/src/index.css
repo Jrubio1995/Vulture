@@ -79,7 +79,7 @@ a {
 .btn-primary:hover {
   background: var(--color5);
 }
-.btn-secundary {
+.btn-secondary {
   background-color: var(--color2);
 }
 .btn-block {

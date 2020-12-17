@@ -6,7 +6,7 @@ import TaskList from '../task/List';
 import AuthContext from '../../context/Auth/AuthContext';
 
 
-const Project = () => {
+const Projects = () => {
     // get the login info
     const authContext = useContext(AuthContext);
     const { loggedinUser } = authContext;
@@ -34,4 +34,4 @@ const Project = () => {
     )
 }
 
-export default Project;
+export default Projects;

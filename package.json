@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "hobbytask",
   "version": "1.0.0",
@@ -30,6 +29,3 @@
     "jsonwebtoken": "^8.5.1"
   }
 }
-=======
-
->>>>>>> 2b92c30ef32531d1d5ab2cf60bcf4aefd635c6aa

@@ -22,7 +22,7 @@ const NewUser = (props) => {
         // eslint-disable-next-line
     }, [message, authenticated, props.history])
 
-    // Login state
+    // Login status
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -58,7 +58,7 @@ const NewUser = (props) => {
             showAlert('The passwords do not match.', 'alert-error');
             return;
         }
-        // Passing to action (function from authState)
+        // Passing to action (function from authStatus)
         userRegistration({
             name,
             email,

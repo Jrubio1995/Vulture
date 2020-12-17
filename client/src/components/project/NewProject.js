@@ -51,7 +51,7 @@ const NewProject = () => {
                         <input
                             type="text"
                             className="input-text"
-                            placeholder="Project Name"
+                            placeholder="Activity Name"
                             name="name"
                             value={name}
                             onChange={onChangeProject}
@@ -59,7 +59,7 @@ const NewProject = () => {
                         <input
                             type="submit"
                             className="btn btn-primary btn-block"
-                            value="Add Project"
+                            value="Add Hobby"
                         />
                     </form>
                 )
