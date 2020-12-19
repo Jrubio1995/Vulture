@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import alertReducer from './AlertReducer';
-import alertContext from './AlertContext';
+import alertReducer from '../alerts/Reducer';
+import alertContext from '../alerts/Context';
 
-import { SHOW_ALERT, HIDE_ALERT } from '../../type';
+import { SHOW_ALERT, HIDE_ALERT } from '../../types/Main';
 
-const AlertStatus = props => {
+const AlertState = props => {
 
     const initialState = {
         alert: null
@@ -38,4 +38,4 @@ const AlertStatus = props => {
     )
 }
 
-export default AlertStatus;
+export default AlertState;

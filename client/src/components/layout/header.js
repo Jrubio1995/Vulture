@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import AuthContext from '../../context/Auth/AuthContext';
+import AuthContext from '../../../src/context/autentification/Context';
 
 const Header = () => {
     // get the login info

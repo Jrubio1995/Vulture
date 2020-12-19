@@ -1,44 +1,41 @@
-import React, { Component } from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from '../src/components/auth/login';
+import Login from '../src/components/auth/Login';
 import NewAccount from '../src/components/auth/NewUser';
-import Projects from '../src/components/project/project';
-import ProjectState from '../src/context/Project/ProjectStatus';
-import TaskStatus from '../src/context/Task/TaskStatus';
-import AlertStatus from './context/Alerts/AlertStatus';
-import AuthStatus from './context/Auth/AuthStatus';
-import AuthToken from './config/AuthToken';
-import PrivateRoute from '../src/components/routes/AuthRoute';
+import Projects from '../src/components/projects/Hobbies';
 
+import ProjectState from '../src/context/projects/Status';
+import TaskState from '../src/context/tasks/Status';
+import AlertState from '../src/context/alerts/Status';
+import AuthState from '../src/context/autentification/Status';
+import tokenAuth from '../src/config/TokenAuth';
+import PrivateRoute from '../src/components/routes/Route';
 
+// check if a token exists
 const token = localStorage.getItem('token');
 if (token) {
-  AuthToken(token);
+  tokenAuth(token);
 }
-
 
 function App() {
 
   return (
     <ProjectState>
-      <TaskStatus>
-        <AlertStatus>
-          <AuthStatus>
+      <TaskState>
+        <AlertState>
+          <AuthState>
             <Router>
               <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/new-account" component={NewAccount} />
-                <PrivateRoute exact path="/project" component={Projects} />
+                <PrivateRoute exact path="/projects" component={Projects} />
               </Switch>
             </Router>
-          </AuthStatus>
-        </AlertStatus>
-      </TaskStatus>
+          </AuthState>
+        </AlertState>
+      </TaskState>
     </ProjectState>
   );
 }
-
 
 export default App;

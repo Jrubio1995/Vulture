@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import AuthContext from '../../context/Auth/AuthContext';
+import AuthContext from '../../context/autentification/Context';
 
 // higher order component
-const AuthRoute = ({ component: Component, ...props }) => {
+const PrivateRoute = ({ component: Component, ...props }) => {
 
     const authContext = useContext(AuthContext);
     const { loading, authenticated, loggedinUser } = authContext;
@@ -24,5 +24,6 @@ const AuthRoute = ({ component: Component, ...props }) => {
     );
 }
 
-export default AuthRoute;
+export default PrivateRoute;
+
 

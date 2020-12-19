@@ -1,56 +1,59 @@
 import React, { Fragment, useContext } from 'react';
-import Task from '../../components/task/task';
-import projectContext from '../../context/Project/ProjectContext';
-import taskContext from '../../context/Task/TaskContext';
+import Task from '../tasks/Task';
+import projectContext from '../../context/projects/Context';
+import taskContext from '../../context/tasks/Context';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const List = () => {
-    const projectsContext = useContext(projectContext);
-    const { project, deleteProject } = projectsContext;
+const TaskList = () => {
+  // extract projects from initial state (projectState.js)
+  const projectsContext = useContext(projectContext);
+  const { project, deleteProject } = projectsContext;
 
-    // get tasks
-    const tasksContext = useContext(taskContext);
-    const { projectstasks } = tasksContext;
-    // If nothing return this
-    if (!project) return <h2>Pick A Hobby Here</h2>;
+  // get project tasks
+  const tasksContext = useContext(taskContext);
+  const { projectstasks } = tasksContext;
 
-    const [actualProject] = project;
+  // if is no selected project
+  if (!project) return <h2>Pick a Hobby</h2>;
 
-    // delete whole project
-    const onClickDelete = () => {
-        deleteProject(actualProject._id)
-    }
+  // array destructuring to get the actual project
+  const [actualProject] = project;
 
-    return (
-        <Fragment>
-            <h2>Project: {actualProject.name}</h2>
-            <ul className="task-list">
-                {projectstasks.length === 0
-                    ? (<li className="task"> <p>NO HOBBY LISTED</p> </li>)
-                    :
-                    <TransitionGroup>
-                        {projectstasks.map(task => (
-                            <CSSTransition
-                                key={task._id}
-                                timeout={200}
-                                classNames="task" >
-                                <Task
-                                    task={task}
-                                />
-                            </CSSTransition>
-                        ))}
-                    </TransitionGroup>
-                }
-            </ul>
-            <button
-                type="button"
-                className="btn btn-delete"
-                onClick={onClickDelete}
-            >Delete This Hobby &times;
+  // delete a project
+  const onClickDelete = () => {
+    deleteProject(actualProject._id)
+  }
+
+  return (
+    <Fragment>
+      <h2>Hobby: {actualProject.name}</h2>
+      <ul className="task-list">
+        {projectstasks.length === 0
+          ? (<li className="task"> <p>No Tasks Are Here</p> </li>)
+          :
+          <TransitionGroup>
+            {projectstasks.map(task => (
+              <CSSTransition
+                key={task._id}
+                timeout={200}
+                classNames="task" >
+                <Task
+                  task={task}
+                />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        }
+      </ul>
+      <button
+        type="button"
+        className="btn btn-delete"
+        onClick={onClickDelete}
+      >Delete Hobby &times;
               </button>
-        </Fragment>
+    </Fragment>
 
-    )
+  )
 }
 
-export default List;
+export default TaskList;

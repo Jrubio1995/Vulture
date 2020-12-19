@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/Users');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
@@ -13,39 +13,39 @@ exports.createUser = async (req, res) => {
     // get email and password
     const { email, password } = req.body;
     try {
-        // check for excitting users in database 
+        // check for unique user (cannot be 2 users with the same email)
         let user = await User.findOne({ email });
 
         if (user) {
-            return res.status(400).json({ msg: 'This User Already Exists.' });
+            return res.status(400).json({ msg: 'User already exists.' });
         }
 
-        // creating a user
+        // create new user
         user = new User(req.body);
 
-        // hashed password
+        // hash the password
         const salt = await bcryptjs.genSalt(10);
         user.password = await bcryptjs.hash(password, salt);
 
-        // user saved
+        // save user
         await user.save();
 
-        // JsonWebToken
+        // Create and sign the JsonWebToken
         const payload = {
             user: {
                 id: user.id
             }
         };
         // sign the JWT
-        jwt.sign(payload, process.env.SECRET, {
-            // Timer
-            expiresIn: 7200
+        jwt.sign(payload, "secret", {
+            expiresIn: 7200 // two hours 
         }, (error, token) => {
             if (error) throw error;
+            // confirmation message
             res.json({ token });
         });
     } catch (error) {
         console.log(error);
-        res.status(400).send('Error');
+        res.status(400).send('Error was found');
     }
 }

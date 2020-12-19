@@ -1,4 +1,4 @@
-import { SHOW_ALERT, HIDE_ALERT } from '../../type/index';
+import { SHOW_ALERT, HIDE_ALERT } from '../../types/Main';
 
 export default (state, action) => {
     switch (action.type) {

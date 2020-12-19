@@ -1,7 +1,7 @@
 // Routes for create users 
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/user');
+const userController = require('../controllers/User');
 const { check } = require('express-validator');
 
 // create a user

@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import projectContext from './ProjectContext';
-import projectReducer from './ProjectReducer';
+import projectContext from '../projects/Context';
+import projectReducer from '../projects/Reducer';
 import {
     PROJECT_FORM,
     GET_PROJECTS,
@@ -9,8 +9,8 @@ import {
     VALIDATE_FORM,
     ACTUAL_PROJECT,
     DELETE_PROJECT
-} from '../../type/index';
-import axiosClient from '../../config/Axios';
+} from '../../types/Main';
+import axiosClient from '../../config/axios';
 
 
 const ProjectState = props => {
@@ -35,7 +35,7 @@ const ProjectState = props => {
     // get projects
     const getProjects = async () => {
         try {
-            const result = await axiosClient.get('/api/project')
+            const result = await axiosClient.get('/api/projects')
             dispatch({
                 type: GET_PROJECTS,
                 payload: result.data.projects
@@ -56,7 +56,7 @@ const ProjectState = props => {
     const addProject = async project => {
 
         try {
-            const result = await axiosClient.post('/api/project', project);
+            const result = await axiosClient.post('/api/projects', project);
             // add project to the state
             dispatch({
                 type: ADD_PROJECT,
@@ -91,7 +91,7 @@ const ProjectState = props => {
     // delete project
     const deleteProject = async projectId => {
         try {
-            await axiosClient.delete(`/api/project/${projectId}`);
+            await axiosClient.delete(`/api/projects/${projectId}`);
             dispatch({
                 type: DELETE_PROJECT,
                 payload: projectId

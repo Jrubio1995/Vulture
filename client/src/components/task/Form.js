@@ -1,10 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
-import projectContext from '../../context/Project/ProjectContext';
-import taskContext from '../../context/Task/TaskContext';
+import projectContext from '../../context/projects/Context';
+import taskContext from '../../context/tasks/Context';
 
 const TaskForm = () => {
+    // extract if a project is active
     const projectsContext = useContext(projectContext);
     const { project } = projectsContext;
+
+    // get state and functions function from taskState
     const tasksContext = useContext(taskContext);
     const { selectedittask, errortask, addTask, validateTask,
         getTasks, updateTask, resetTask } = tasksContext;
@@ -20,7 +23,7 @@ const TaskForm = () => {
         }
     }, [selectedittask]);
 
-    // status form
+    // state of form
     const [task, setTask] = useState({
         name: '',
     })
@@ -51,23 +54,24 @@ const TaskForm = () => {
         }
         // if is Edit or New Task
         if (selectedittask === null) {
-            // add the new task to the status
+            // add the new task to the state
             task.project = actualProject._id;
             addTask(task);
         } else {
             updateTask(task);
+            // eliminate selectedtask from state
             resetTask()
         }
-
+        // get and filter the tasks from actual project
         getTasks(actualProject.id)
+        // reinitiate form
         setTask({
             name: '',
         })
     }
-    // line 93 : Alert if nothing is Entered 
     return (
         <div className="task-form">
-            <h2 className="task-form-title">ADD TASK TO THIS HOBBY</h2>
+            <h2 className="task-form-title">Add A Task Here</h2>
             <form
                 onSubmit={onSubmit}
             >
@@ -75,7 +79,7 @@ const TaskForm = () => {
                     <input
                         type="text"
                         className="input-text"
-                        placeholder="Task name here"
+                        placeholder="Task name"
                         name="name"
                         value={name}
                         onChange={handleChange}
@@ -85,11 +89,11 @@ const TaskForm = () => {
                     <input
                         type="submit"
                         className="btn btn-primary btn-block btn-submit"
-                        value={selectedittask ? 'Edit Task' : 'Add Task'}
+                        value={selectedittask ? 'Add Task' : 'Add New Task'}
                     />
                 </div>
             </form>
-            {errortask ? <p className="message error">HOBBY NAME IS A REQUIRED FEILD</p>
+            {errortask ? <p className="message error">Task Name Is A Required.</p>
                 : null}
         </div>
     )

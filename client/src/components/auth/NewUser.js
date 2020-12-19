@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import AlertContext from '../../context/Alerts/AlertContext';
-import AuthContext from '../../context/Auth/AuthContext';
+import AlertContext from '../../context/alerts/Context';
+import AuthContext from '../../../src/context/autentification/Context';
 
-const NewUser = (props) => {
+const NewAccount = (props) => {
     // get values from context
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
@@ -14,7 +14,7 @@ const NewUser = (props) => {
     // if the user is already registered or logged in 
     useEffect(() => {
         if (authenticated) {
-            props.history.push('/project')
+            props.history.push('/projects')
         }
         if (message) {
             showAlert(message.msg, message.category);
@@ -22,7 +22,7 @@ const NewUser = (props) => {
         // eslint-disable-next-line
     }, [message, authenticated, props.history])
 
-    // Login status
+    // Login state
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -40,7 +40,7 @@ const NewUser = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        // check for any empty fields
+        // check for empty fields
         if (name.trim() === '' || email.trim() === '' || password.trim() === '' ||
             confirmPassword.trim() === '') {
             showAlert('All fields are required.', 'alert-error');
@@ -48,8 +48,8 @@ const NewUser = (props) => {
         }
 
         // Password have to be minimum 6 caracters
-        if (password.length < 8) {
-            showAlert('Password must be minimum of 8 characters.', 'alert-error');
+        if (password.length < 6) {
+            showAlert('Password must have 6 characters or more.', 'alert-error');
             return;
         }
 
@@ -58,7 +58,7 @@ const NewUser = (props) => {
             showAlert('The passwords do not match.', 'alert-error');
             return;
         }
-        // Passing to action (function from authStatus)
+        // Passing to action (function from authState)
         userRegistration({
             name,
             email,
@@ -68,12 +68,12 @@ const NewUser = (props) => {
 
     return (
         <Fragment>
-            <h1 className="home-title">Hobbies & Task</h1>
+            <h1 className="home-title">Hobby & Task </h1>
             <div className="user-form">
                 {alert ? (<div className={`alert ${alert.category}`}>{alert.msg}</div>)
                     : null}
                 <div className="container-form dark-shadow">
-                    <h1>Make an account</h1>
+                    <h1>Make Account</h1>
                     <form
                         onSubmit={onSubmit}
                     >
@@ -94,7 +94,7 @@ const NewUser = (props) => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="Your email"
+                                placeholder="Email Here"
                                 value={email}
                                 onChange={onChange}
                             />
@@ -105,7 +105,7 @@ const NewUser = (props) => {
                                 type="password"
                                 id="password"
                                 name="password"
-                                placeholder="Your password"
+                                placeholder="Password Here"
                                 value={password}
                                 onChange={onChange}
                             />
@@ -116,7 +116,7 @@ const NewUser = (props) => {
                                 type="password"
                                 id="confirmPassword"
                                 name="confirmPassword"
-                                placeholder="Repeat Your password"
+                                placeholder="Repeat Password Here"
                                 value={confirmPassword}
                                 onChange={onChange}
                             />
@@ -127,11 +127,11 @@ const NewUser = (props) => {
                         </div>
                     </form>
                     <p>Have an account?</p>
-                    <Link to="/" className="get-account" >Go to Login Page</Link>
+                    <Link to="/" className="get-account" >Go back to Login</Link>
                 </div>
             </div>
         </Fragment>
     )
 }
 
-export default NewUser;
+export default NewAccount;

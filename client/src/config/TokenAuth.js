@@ -1,6 +1,6 @@
-import axiosClient from './Axios';
+import axiosClient from './axios';
 
-const AuthToken = token => {
+const tokenAuth = token => {
     if (token) {
         axiosClient.defaults.headers.common['x-auth-token'] = token;
     } else {
@@ -8,4 +8,4 @@ const AuthToken = token => {
     }
 }
 
-export default AuthToken;
+export default tokenAuth;

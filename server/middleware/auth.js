@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
+    // Read token from header
     const token = req.header('x-auth-token');
 
-    // Checking for a token
+    // Check if is no token
     if (!token) {
-        return res.status(401).json({ msg: 'Token Is Required' })
+        return res.status(401).json({ msg: 'No Token. You need a token' })
     }
-    // Token checking
+    // Token validation
     try {
         const verifyToken = jwt.verify(token, "secret");
         req.user = verifyToken.user;
         next();
     } catch (error) {
-        res.status(401).json({ msg: 'Invalid' });
+        res.status(401).json({ msg: 'Invalid Token' });
     }
 }

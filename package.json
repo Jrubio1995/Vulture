@@ -1,7 +1,7 @@
 {
-  "name": "hobbytask",
+  "name": "hobbymanager",
   "version": "1.0.0",
-  "description": "Hobby task manager",
+  "description": "Mern Demo",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -19,7 +19,7 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.10.18",
     "bcryptjs": "^2.4.3",

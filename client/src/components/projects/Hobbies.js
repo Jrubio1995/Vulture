@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import Sidebar from '../layout/sidebar';
-import Header from '../layout/header';
-import TaskForm from '../task/Form';
-import TaskList from '../task/List';
-import AuthContext from '../../context/Auth/AuthContext';
+import Sidebar from '../layout/Sidebar';
+import Header from '../layout/Header';
+import TaskForm from '../../components/tasks/Form';
+import TaskList from '../../components/tasks/List';
+import AuthContext from '../../context/autentification/Context';
 
 
 const Projects = () => {

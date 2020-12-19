@@ -1,4 +1,4 @@
-const Project = require('../models/Project');
+const Project = require('../models/Projects');
 const { validationResult } = require('express-validator');
 
 exports.createProject = async (req, res) => {
@@ -51,16 +51,18 @@ exports.updateProject = async (req, res) => {
     }
 
     try {
+        // check the ID
         let project = await Project.findById(req.params.id);
 
         // if project exist or not
         if (!project) {
             return res.status(404).json({ msg: 'Project not founded.' })
         }
+        // verify project author
         if (project.author.toString() !== req.user.id) {
             return res.status(401).json({ msg: 'Not Authorized' })
         }
-        // updates
+        // update
         project = await Project.findByIdAndUpdate({ _id: req.params.id },
             { $set: newProject }, { new: true });
 
@@ -72,6 +74,7 @@ exports.updateProject = async (req, res) => {
     }
 }
 
+// delete a project by ID
 exports.deleteProject = async (req, res) => {
     try {
         // check the ID

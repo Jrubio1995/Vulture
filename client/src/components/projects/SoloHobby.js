@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import projectContext from '../../context/Project/ProjectContext';
-import taskContext from '../../context/Task/TaskContext';
+import projectContext from '../../context/projects/Context';
+import taskContext from '../../context/tasks/Context';
 
-const SoloProject = ({ project }) => {
-    // get status of projects
+const SingleProject = ({ project }) => {
+    // get state of projects
     const projectsContext = useContext(projectContext);
     const { actualProject } = projectsContext;
 
@@ -29,4 +29,4 @@ const SoloProject = ({ project }) => {
     )
 }
 
-export default SoloProject;
+export default SingleProject;

@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/Users');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
@@ -16,24 +16,25 @@ exports.loginUsers = async (req, res) => {
         // check if is registered user
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ msg: 'User Is Not registered' });
+            return res.status(400).json({ msg: 'User not registered' });
         }
         // check password
         const correctPass = await bcryptjs.compare(password, user.password)
         if (!correctPass) {
             return res.status(400).json({ msg: "Incorrect Password Entered" })
         }
-
+        // If is no error: Create and sign the JsonWebToken
         const payload = {
             user: {
                 id: user.id
             }
         };
+        // sign the JWT
         jwt.sign(payload, "secret", {
-            // Timer
-            //expiresIn: 3600
+            expiresIn: 3600 // one hour 
         }, (error, token) => {
             if (error) throw error;
+            // confirmation message
             res.json({ token });
         });
 
@@ -42,13 +43,13 @@ exports.loginUsers = async (req, res) => {
     }
 }
 
-// get the login user
+// get the loggedin user
 exports.loggedinUser = async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json({ user });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ msg: 'Error found.' })
+        res.status(500).json({ msg: 'Error was found.' })
     }
 }

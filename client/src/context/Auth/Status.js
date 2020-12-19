@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
-import AuthContext from './AuthContext';
-import AuthReducer from './AuthReducer';
-import axiosClient from '../../config/Axios';
-import AuthToken from '../../config/AuthToken';
+import AuthContext from '../autentification/Context';
+import AuthReducer from '../autentification/Reducer';
+import axiosClient from '../../config/axios';
+import tokenAuth from '../../config/TokenAuth';
 
 import {
     SUCCESS_REGISTRATION,
@@ -11,9 +11,9 @@ import {
     SUCCESS_LOGIN,
     ERROR_LOGIN,
     CLOSE_SESSION
-} from '../../type/index';
+} from '../../types/Main';
 
-const AuthStatus = props => {
+const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
         authenticated: null,
@@ -48,22 +48,24 @@ const AuthStatus = props => {
         }
     }
 
-    // Returns the login user
+    // Return the loggedin user
     const loggedinUser = async () => {
 
         const token = localStorage.getItem('token');
         if (token) {
-            // send token to headers
-            AuthToken(token);
+            // function for send token by headers
+            tokenAuth(token);
         }
         try {
             const response = await axiosClient.get('/api/auth');
+            // console.log(response);
             dispatch({
                 type: GET_USER,
                 payload: response.data.user
             })
 
         } catch (error) {
+            // console.log(error.response);
             dispatch({
                 type: ERROR_LOGIN
             })
@@ -79,6 +81,7 @@ const AuthStatus = props => {
             });
             loggedinUser();
         } catch (error) {
+            // console.log(error.response.data.msg)
             const alert = {
                 msg: error.response.data.msg,
                 category: 'alert-error'
@@ -116,4 +119,4 @@ const AuthStatus = props => {
     )
 }
 
-export default AuthStatus;
+export default AuthState;

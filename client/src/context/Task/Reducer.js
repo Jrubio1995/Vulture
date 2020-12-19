@@ -6,7 +6,7 @@ import {
     ACTUAL_TASK,
     UPDATE_TASK,
     RESET_TASK
-} from '../../type/index';
+} from '../../types/Main';
 
 export default (state, action) => {
     switch (action.type) {

@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import taskContext from '../../context/Task/TaskContext';
-import projectContext from '../../context/Project/ProjectContext';
+import taskContext from '../../context/tasks/Context';
+import projectContext from '../../context/projects/Context';
 
 const Task = ({ task }) => {
+
+    // get state and functions function from taskState
     const tasksContext = useContext(taskContext);
     const { deleteTask, getTasks, updateTask, editActualTask } = tasksContext;
 
@@ -18,7 +20,7 @@ const Task = ({ task }) => {
         getTasks(actualProject.id);
     }
 
-    // modify task status
+    // modify task state
     const changeState = task => {
         if (task.state) {
             task.state = false;
@@ -39,7 +41,7 @@ const Task = ({ task }) => {
                     (
                         <button type="button"
                             className="complete"
-                            onClick={() => changeState(task)} >Finish</button>
+                            onClick={() => changeState(task)} >Finished</button>
                     )
                     :
                     (
@@ -59,7 +61,7 @@ const Task = ({ task }) => {
                 </button>
                 <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-secundary"
                     onClick={() => onClickDeleteTask(task._id)}
                 >
                     Delete

@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useContext } from 'react';
-import projectContext from '../../context/Project/ProjectContext';
+import projectContext from '../../context/projects/Context';
 
 const NewProject = () => {
+    // get state from New Project form
     const projectsContext = useContext(projectContext);
     const { form, formerror, showForm, addProject, showError } = projectsContext;
 
@@ -22,10 +23,12 @@ const NewProject = () => {
     // when user add a project
     const onSubmitProject = e => {
         e.preventDefault();
+        // validation
         if (name === '') {
             showError();
             return;
         }
+        // add to state (projectState.js)
         addProject(project);
         // form reinitiate
         setProject({
@@ -40,7 +43,7 @@ const NewProject = () => {
                 className="btn btn-block btn-primary"
                 onClick={() => showForm()}
             >
-                Start a New Hobby
+                Start A Hobby Here
             </button>
             {
                 form ? (
@@ -51,7 +54,7 @@ const NewProject = () => {
                         <input
                             type="text"
                             className="input-text"
-                            placeholder="Activity Name"
+                            placeholder="Project Name"
                             name="name"
                             value={name}
                             onChange={onChangeProject}
@@ -65,7 +68,7 @@ const NewProject = () => {
                 )
                     : null
             }
-            { formerror ? <p className="message error">Project Name is required.</p> : null}
+            { formerror ? <p className="message error">A Name For This Hobby is required.</p> : null}
         </Fragment>
     )
 }

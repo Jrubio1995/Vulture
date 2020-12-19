@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const projectController = require('../controllers/project');
+const projectController = require('../controllers/Project');
 const auth = require('../middleware/auth');
 const { check } = require('express-validator');
 
-// Create project
-// api/project
+// Create projects
+// api/projects
 router.post('/',
     auth,
     [
@@ -20,7 +20,7 @@ router.get('/',
     projectController.getProjects
 );
 
-// update a project 
+// update a project via ID
 router.put('/:id',
     auth,
     [
@@ -29,7 +29,7 @@ router.put('/:id',
     projectController.updateProject
 );
 
-// Delete Project
+// Delete Projects
 router.delete('/:id',
     auth,
     projectController.deleteProject

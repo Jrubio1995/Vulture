@@ -1,4 +1,3 @@
-
 import {
     SUCCESS_REGISTRATION,
     ERROR_REGISTRATION,
@@ -6,7 +5,7 @@ import {
     SUCCESS_LOGIN,
     ERROR_LOGIN,
     CLOSE_SESSION
-} from '../../type/index';
+} from '../../types/Main';
 
 export default (state, action) => {
     switch (action.type) {

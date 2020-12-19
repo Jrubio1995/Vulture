@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import SingleProject from './SoloProject';
-import projectContext from '../../context/Project/ProjectContext';
-import alertContext from '../../context/Alerts/AlertContext';
+import SingleProject from '../projects/SoloHobby';
+import projectContext from '../../context/projects/Context';
+import alertContext from '../../context/alerts/Context';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const ProjectList = () => {
+    // extract projects from initial state (projectState.js)
     const projectsContext = useContext(projectContext);
     const { message, projects, getProjects } = projectsContext;
 
@@ -21,7 +22,7 @@ const ProjectList = () => {
         // eslint-disable-next-line
     }, [message]);
 
-    if (projects.length === 0) return <p>No Hobbies. Add a New Hobby.</p>;
+    if (projects.length === 0) return <p>No Hobbies Here. Add One.</p>;
 
 
     return (
